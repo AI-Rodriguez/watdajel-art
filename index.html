@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WATDAJEL — Creative & Cultural Platform, Utrecht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f0ebe3;
+    --warm-white: #faf7f2;
+    --accent: #c8432b;
+    --accent-hover: #e04e33;
+    --grey: #6b6560;
+    --light-grey: #d4cfc9;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--warm-white);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════
+     NAVIGATION
+  ═══════════════════════════════════════ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    mix-blend-mode: difference;
+    transition: all 0.4s ease;
+  }
+
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--off-white);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .lang-toggle {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    border: 1px solid rgba(240,235,227,0.4);
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    background: none;
+    color: var(--off-white);
+    font-family: var(--sans);
+    text-transform: uppercase;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--off-white);
+    background: rgba(240,235,227,0.1);
+  }
+
+  /* ═══════════════════════════════════════
+     HERO — FULL SCREEN VIDEO
+  ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-video-container {
+    position: absolute;
+    inset: 0;
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  /* Placeholder — replace with actual <video> tag */
+  .hero-video-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    filter: grayscale(20%);
+  }
+
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.1) 0%,
+      rgba(10,10,10,0.15) 50%,
+      rgba(10,10,10,0.85) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 3rem 4rem;
+    max-width: 900px;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--off-white);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-subtitle {
+    font-family: var(--sans);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(240,235,227,0.75);
+    max-width: 520px;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1s ease 0.9s both;
+  }
+
+  .hero-scroll-indicator span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.5);
+    writing-mode: vertical-lr;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: rgba(240,235,227,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--off-white);
+    animation: scrollDown 2s ease infinite;
+  }
+
+  /* ═══════════════════════════════════════
+     MANIFESTO SECTION
+  ═══════════════════════════════════════ */
+  .manifesto {
+    padding: 8rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .manifesto-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: sticky;
+    top: 8rem;
+  }
+
+  .manifesto-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 2rem;
+    color: var(--off-white);
+  }
+
+  .manifesto-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(240,235,227,0.65);
+    margin-bottom: 1.5rem;
+    max-width: 560px;
+  }
+
+  .manifesto-text p em {
+    color: var(--off-white);
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.1em;
+  }
+
+  /* ═══════════════════════════════════════
+     IMAGE STRIP
+  ═══════════════════════════════════════ */
+  .image-strip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    gap: 4px;
+    height: 55vh;
+    overflow: hidden;
+  }
+
+  .image-strip-item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    filter: grayscale(15%);
+  }
+
+  .image-strip-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(240,235,227,0.08);
+  }
+
+  .image-placeholder span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.2);
+  }
+
+  /* ═══════════════════════════════════════
+     PROGRAM / EVENTS
+  ═══════════════════════════════════════ */
+  .program {
+    padding: 8rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(240,235,227,0.1);
+  }
+
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .section-header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(240,235,227,0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .event-item:hover {
+    padding-left: 1rem;
+  }
+
+  .event-item:hover .event-title {
+    color: var(--accent);
+  }
+
+  .event-date {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: rgba(240,235,227,0.4);
+    font-style: italic;
+  }
+
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .event-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+
+  .event-description {
+    font-size: 0.85rem;
+    color: rgba(240,235,227,0.4);
+  }
+
+  .event-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.35);
+    border: 1px solid rgba(240,235,227,0.15);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════════════
+     SPACE SECTION — LARGE IMAGE + TEXT
+  ═══════════════════════════════════════ */
+  .space {
+    padding: 0 3rem;
+    max-width: 1200px;
+    margin: 0 auto 8rem;
+  }
+
+  .space-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+
+  .space-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .space-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%);
+  }
+
+  .space-info {
+    padding-bottom: 2rem;
+  }
+
+  .space-info h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .space-info p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(240,235,227,0.6);
+    margin-bottom: 1rem;
+  }
+
+  .space-address {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(240,235,227,0.1);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: rgba(240,235,227,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     QUOTE / BREAK
+  ═══════════════════════════════════════ */
+  .quote-break {
+    padding: 6rem 3rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-break blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.5;
+    color: rgba(240,235,227,0.5);
+  }
+
+  .quote-symbol {
+    font-family: var(--serif);
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER / CONTACT
+  ═══════════════════════════════════════ */
+  footer {
+    padding: 6rem 3rem 3rem;
+    border-top: 1px solid rgba(240,235,227,0.08);
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .footer-brand h3 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(240,235,227,0.4);
+    max-width: 350px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(240,235,227,0.5);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--off-white);
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(240,235,227,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: rgba(240,235,227,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════════════════════════════════════
+     ANIMATIONS
+  ═══════════════════════════════════════ */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scrollDown {
+    0% { top: -100%; }
+    50% { top: 100%; }
+    100% { top: 100%; }
+  }
+
+  /* Scroll-triggered reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    nav {
+      padding: 1.2rem 1.5rem;
+    }
+
+    .nav-links {
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+    }
+
+    .hero-content {
+      padding: 0 1.5rem 3rem;
+    }
+
+    .manifesto {
+      grid-template-columns: 1fr;
+      padding: 5rem 1.5rem;
+      gap: 2rem;
+    }
+
+    .manifesto-label {
+      position: static;
+    }
+
+    .image-strip {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+
+    .image-strip-item {
+      height: 40vh;
+    }
+
+    .program {
+      padding: 5rem 1.5rem;
+    }
+
+    .event-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .event-tag {
+      justify-self: start;
+    }
+
+    .space {
+      padding: 0 1.5rem;
+    }
+
+    .space-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-scroll-indicator {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">Watdajel</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#space">Space</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="lang-toggle" onclick="toggleLang()">NL</button></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO — FULL-SCREEN VIDEO
+═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-video-container">
+    <!--
+      ╔═══════════════════════════════════════════════════╗
+      ║  REPLACE THIS <img> WITH YOUR <video> TAG:       ║
+      ║                                                   ║
+      ║  <video autoplay muted loop playsinline           ║
+      ║    class="hero-video-placeholder">                ║
+      ║    <source src="your-video.mp4" type="video/mp4"> ║
+      ║  </video>                                         ║
+      ╚═══════════════════════════════════════════════════╝
+    -->
+    <img
+      src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1920&q=80"
+      alt="Atmospheric event space"
+      class="hero-video-placeholder"
+    >
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title" data-en="Watdajel" data-nl="Watdajel">Watdajel</h1>
+    <p class="hero-subtitle" data-en="A platform for art, ideas, and creative exchange in the heart of Utrecht. Where independent artists meet monumental spaces." data-nl="Een platform voor kunst, ideeën en creatieve uitwisseling in het hart van Utrecht. Waar onafhankelijke kunstenaars monumentale ruimtes ontmoeten.">A platform for art, ideas, and creative exchange in the heart of Utrecht. Where independent artists meet monumental spaces.</p>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MANIFESTO
+═══════════════════════════════════════ -->
+<section class="manifesto" id="about">
+  <div class="manifesto-label reveal" data-en="What we are" data-nl="Wat we zijn">What we are</div>
+  <div class="manifesto-text">
+    <h2 class="reveal" data-en="Not a gallery. Not a club. Something else entirely." data-nl="Geen galerie. Geen club. Iets heel anders.">Not a gallery. Not a club.<br>Something else entirely.</h2>
+    <p class="reveal" data-en="Watdajel is a creative and cultural platform born from South American roots and nurtured in Utrecht. We bring together visual art, music, performance, and ideas — not as separate disciplines, but as one living conversation." data-nl="Watdajel is een creatief en cultureel platform met Zuid-Amerikaanse wortels, gegroeid in Utrecht. We brengen beeldende kunst, muziek, performance en ideeën samen — niet als aparte disciplines, maar als één levend gesprek.">Watdajel is a creative and cultural platform born from South American roots and nurtured in Utrecht. We bring together visual art, music, performance, and ideas — not as separate disciplines, but as one living conversation.</p>
+    <p class="reveal" data-en="Since our first festival, we've activated monumental spaces across the city — from churches to hidden courtyards — turning them into temporary worlds where emerging and established artists share the same stage." data-nl="Sinds ons eerste festival activeren we monumentale ruimtes door de hele stad — van kerken tot verborgen binnenplaatsen — en maken er tijdelijke werelden van waar opkomende en gevestigde kunstenaars hetzelfde podium delen.">Since our first festival, we've activated monumental spaces across the city — from churches to hidden courtyards — turning them into temporary worlds where emerging and established artists share the same stage.</p>
+    <p class="reveal"><em data-en="We don't just show art. We create the conditions for it to happen." data-nl="We tonen niet alleen kunst. We creëren de condities waaronder het ontstaat.">We don't just show art. We create the conditions for it to happen.</em></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     IMAGE STRIP — 3 PHOTOS
+═══════════════════════════════════════ -->
+<div class="image-strip">
+  <div class="image-strip-item">
+    <!--
+      Replace these placeholders with actual photos from the archive.
+      Ideal: wide atmospheric shots, performers, installations, crowd moments.
+    -->
+    <div class="image-placeholder">
+      <span>Photo from archive — Festival at Nicolaïkerk</span>
+    </div>
+  </div>
+  <div class="image-strip-item">
+    <div class="image-placeholder">
+      <span>Photo — Visual art installation</span>
+    </div>
+  </div>
+  <div class="image-strip-item">
+    <div class="image-placeholder">
+      <span>Photo — Live performance / artist</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     QUOTE BREAK
+═══════════════════════════════════════ -->
+<div class="quote-break reveal">
+  <div class="quote-symbol">◎</div>
+  <blockquote data-en="Creativity has no passport, no genre, no permission needed." data-nl="Creativiteit heeft geen paspoort, geen genre, geen toestemming nodig.">Creativity has no passport, no genre, no permission needed.</blockquote>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PROGRAM / UPCOMING EVENTS
+═══════════════════════════════════════ -->
+<section class="program" id="program">
+  <div class="section-header reveal">
+    <h2 data-en="Program" data-nl="Programma">Program</h2>
+    <span class="label" data-en="Upcoming" data-nl="Aankomend">Upcoming</span>
+  </div>
+  <div class="event-list">
+    <a class="event-item reveal" href="#">
+      <span class="event-date">2026 — TBA</span>
+      <div class="event-info">
+        <span class="event-title" data-en="Opening Exhibition" data-nl="Openingsexpositie">Opening Exhibition</span>
+        <span class="event-description" data-en="First look at the new Watdajel era — visual art & live talks" data-nl="Eerste blik op het nieuwe Watdajel tijdperk — beeldende kunst & live talks">First look at the new Watdajel era — visual art & live talks</span>
+      </div>
+      <span class="event-tag" data-en="Exhibition" data-nl="Expositie">Exhibition</span>
+    </a>
+    <a class="event-item reveal" href="#">
+      <span class="event-date">2026 — TBA</span>
+      <div class="event-info">
+        <span class="event-title" data-en="Sound & Vision" data-nl="Geluid & Beeld">Sound & Vision</span>
+        <span class="event-description" data-en="Experimental music meets visual storytelling" data-nl="Experimentele muziek ontmoet visueel verhalen vertellen">Experimental music meets visual storytelling</span>
+      </div>
+      <span class="event-tag" data-en="Music + Art" data-nl="Muziek + Kunst">Music + Art</span>
+    </a>
+    <a class="event-item reveal" href="#">
+      <span class="event-date">2026 — TBA</span>
+      <div class="event-info">
+        <span class="event-title" data-en="Ideas Forum" data-nl="Ideeën Forum">Ideas Forum</span>
+        <span class="event-description" data-en="Conversations on creativity, community, and what comes next" data-nl="Gesprekken over creativiteit, gemeenschap en wat er komt">Conversations on creativity, community, and what comes next</span>
+      </div>
+      <span class="event-tag" data-en="Talks" data-nl="Gesprekken">Talks</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     THE SPACE
+═══════════════════════════════════════ -->
+<section class="space" id="space">
+  <div class="space-grid">
+    <div class="space-image reveal">
+      <!--
+        Replace with photo of the actual space at Catharijnesingel 52.
+        A warm, atmospheric shot showing the plants-and-art interior.
+      -->
+      <div class="image-placeholder" style="width:100%;height:100%;">
+        <span>Photo — The Watdajel space, Catharijnesingel</span>
+      </div>
+    </div>
+    <div class="space-info">
+      <h2 class="reveal" data-en="The Space" data-nl="De Ruimte">The Space</h2>
+      <p class="reveal" data-en="Located in the center of Utrecht, our space is both a broedplaats and a stage. Surrounded by art and plants, it serves as a workspace for creators, a venue for exhibitions, and a meeting ground for anyone who believes in the power of making things together." data-nl="Gelegen in het centrum van Utrecht, is onze ruimte zowel een broedplaats als een podium. Omringd door kunst en planten, dient het als werkruimte voor makers, als locatie voor exposities, en als ontmoetingsplek voor iedereen die gelooft in de kracht van samen maken.">Located in the center of Utrecht, our space is both a broedplaats and a stage. Surrounded by art and plants, it serves as a workspace for creators, a venue for exhibitions, and a meeting ground for anyone who believes in the power of making things together.</p>
+      <div class="space-address reveal">
+        Catharijnesingel 52<br>
+        3511 GC Utrecht<br>
+        The Netherlands
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER / CONTACT
+═══════════════════════════════════════ -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Watdajel</h3>
+      <p data-en="Creative & cultural platform in Utrecht. Art, ideas, and everything in between." data-nl="Creatief & cultureel platform in Utrecht. Kunst, ideeën, en alles daartussenin.">Creative & cultural platform in Utrecht. Art, ideas, and everything in between.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Connect" data-nl="Contact">Connect</h4>
+      <a href="mailto:info@watdajel.com">info@watdajel.com</a>
+      <a href="https://www.instagram.com/watdajel_festival/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/watdajel.art" target="_blank">Facebook</a>
+      <a href="https://soundcloud.com/watdajel" target="_blank">SoundCloud</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Visit" data-nl="Bezoek">Visit</h4>
+      <a href="#">Catharijnesingel 52</a>
+      <a href="#">3511 GC Utrecht</a>
+      <a href="#">The Netherlands</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Watdajel</span>
+    <span data-en="Creative & Sustainable Spaces" data-nl="Creatieve & Duurzame Ruimtes">Creative & Sustainable Spaces</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+  // ── Language Toggle ──
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'nl' : 'en';
+    const btn = document.querySelector('.lang-toggle');
+    btn.textContent = currentLang === 'en' ? 'NL' : 'EN';
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute(`data-${currentLang}`);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = text;
+        } else {
+          el.innerHTML = text;
+        }
+      }
+    });
+  }
+
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Smooth scroll for nav ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
