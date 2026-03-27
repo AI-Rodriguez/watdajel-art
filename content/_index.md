@@ -17,8 +17,14 @@ manifesto_p3_nl: "Wij creëren de condities waaronder grote kunst ontstaat."
 quote_en: "Creativity has no passport, no genre, no permission needed."
 quote_nl: "Creativiteit heeft geen paspoort, geen genre, geen toestemming nodig."
 
+hero_image: "hero-event.jpg"
+strip_image_1: ""
+strip_image_2: ""
+strip_image_3: ""
+
 space_title_en: "The Space"
 space_title_nl: "De Ruimte"
 space_description_en: "Broedplaats and stage in the center of Utrecht. A workspace for creators, a venue for exhibitions, a meeting ground for anyone who believes in the power of making things together."
 space_description_nl: "Broedplaats en podium in het centrum van Utrecht. Een werkruimte voor makers, een locatie voor exposities, een ontmoetingsplek voor iedereen die gelooft in de kracht van samen maken."
+space_image: ""
 ---
