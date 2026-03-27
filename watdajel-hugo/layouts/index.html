@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WATDAJEL — Creative & Cultural Platform, Utrecht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,300;1,14..32,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1E1C19;
+    --off-white: #F0EBE3;
+    --warm-white: #F5F2EC;
+    --accent: #D4613A;
+    --accent-hover: #E07348;
+    --grey: #8A847A;
+    --light-grey: #C4BFB6;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--warm-white);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════
+     NAVIGATION
+  ═══════════════════════════════════════ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    mix-blend-mode: difference;
+    transition: all 0.4s ease;
+  }
+
+  .nav-logo {
+    font-family: var(--font);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--off-white);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .lang-toggle {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    border: 1px solid rgba(240,235,227,0.3);
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    background: none;
+    color: var(--off-white);
+    font-family: var(--font);
+    text-transform: uppercase;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--off-white);
+    background: rgba(240,235,227,0.08);
+  }
+
+  /* ═══════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-video-container {
+    position: absolute;
+    inset: 0;
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  .hero-video-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(30,28,25,0.05) 0%,
+      rgba(30,28,25,0.1) 40%,
+      rgba(30,28,25,0.85) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 3rem 5rem;
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-family: var(--font);
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--off-white);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(240,235,227,0.65);
+    max-width: 440px;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1s ease 0.9s both;
+  }
+
+  .hero-scroll-indicator span {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.4);
+    writing-mode: vertical-lr;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: rgba(240,235,227,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--off-white);
+    animation: scrollDown 2s ease infinite;
+  }
+
+  /* ═══════════════════════════════════════
+     MANIFESTO
+  ═══════════════════════════════════════ */
+  .manifesto {
+    padding: 8rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .manifesto-label {
+    font-family: var(--font);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: sticky;
+    top: 8rem;
+  }
+
+  .manifesto-text p {
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    line-height: 1.5;
+    color: rgba(240,235,227,0.7);
+    margin-bottom: 1.5rem;
+    max-width: 560px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  .manifesto-text p em {
+    color: var(--off-white);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* ═══════════════════════════════════════
+     IMAGE STRIP
+  ═══════════════════════════════════════ */
+  .image-strip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    gap: 3px;
+    height: 55vh;
+    overflow: hidden;
+  }
+
+  .image-strip-item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .image-strip-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(240,235,227,0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(240,235,227,0.06);
+  }
+
+  .image-placeholder span {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     PROGRAM / EVENTS
+  ═══════════════════════════════════════ */
+  .program {
+    padding: 8rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(240,235,227,0.08);
+  }
+
+  .section-header h2 {
+    font-family: var(--font);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .section-header .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(240,235,227,0.06);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .event-item:hover {
+    padding-left: 1rem;
+  }
+
+  .event-item:hover .event-title {
+    color: var(--accent);
+  }
+
+  .event-date {
+    font-size: 0.8rem;
+    color: rgba(240,235,227,0.35);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .event-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+  }
+
+  .event-description {
+    font-size: 0.8rem;
+    color: rgba(240,235,227,0.35);
+    font-weight: 300;
+  }
+
+  .event-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.3);
+    border: 1px solid rgba(240,235,227,0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════════════
+     SPACE
+  ═══════════════════════════════════════ */
+  .space {
+    padding: 0 3rem;
+    max-width: 1200px;
+    margin: 0 auto 8rem;
+  }
+
+  .space-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+
+  .space-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .space-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .space-info {
+    padding-bottom: 2rem;
+  }
+
+  .space-info h2 {
+    font-family: var(--font);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .space-info p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(240,235,227,0.5);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .space-address {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(240,235,227,0.08);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: rgba(240,235,227,0.35);
+    line-height: 1.8;
+  }
+
+  /* ═══════════════════════════════════════
+     QUOTE / BREAK
+  ═══════════════════════════════════════ */
+  .quote-break {
+    padding: 6rem 3rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .quote-break blockquote {
+    font-family: var(--font);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.45;
+    color: rgba(240,235,227,0.4);
+    letter-spacing: -0.02em;
+  }
+
+  .quote-symbol {
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════ */
+  footer {
+    padding: 6rem 3rem 3rem;
+    border-top: 1px solid rgba(240,235,227,0.06);
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .footer-brand h3 {
+    font-family: var(--font);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(240,235,227,0.35);
+    max-width: 300px;
+    font-weight: 300;
+  }
+
+  .footer-col h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(240,235,227,0.4);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+    font-weight: 300;
+  }
+
+  .footer-col a:hover {
+    color: var(--off-white);
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(240,235,227,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    color: rgba(240,235,227,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════════════════════════════════════
+     ANIMATIONS
+  ═══════════════════════════════════════ */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scrollDown {
+    0% { top: -100%; }
+    50% { top: 100%; }
+    100% { top: 100%; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    nav {
+      padding: 1.2rem 1.5rem;
+    }
+
+    .nav-links {
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.65rem;
+    }
+
+    .hero-content {
+      padding: 0 1.5rem 3rem;
+    }
+
+    .manifesto {
+      grid-template-columns: 1fr;
+      padding: 5rem 1.5rem;
+      gap: 2rem;
+    }
+
+    .manifesto-label {
+      position: static;
+    }
+
+    .image-strip {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+
+    .image-strip-item {
+      height: 40vh;
+    }
+
+    .program {
+      padding: 5rem 1.5rem;
+    }
+
+    .event-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .event-tag {
+      justify-self: start;
+    }
+
+    .space {
+      padding: 0 1.5rem;
+    }
+
+    .space-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-scroll-indicator {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">Watdajel</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-en="About" data-nl="Over">About</a></li>
+    <li><a href="#program" data-en="Program" data-nl="Programma">Program</a></li>
+    <li><a href="#space" data-en="Space" data-nl="Ruimte">Space</a></li>
+    <li><a href="#contact" data-en="Contact" data-nl="Contact">Contact</a></li>
+    <li><button class="lang-toggle" onclick="toggleLang()">NL</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-container">
+    <!--
+      Replace this <img> with your <video> tag when ready:
+      <video autoplay muted loop playsinline class="hero-video-placeholder">
+        <source src="your-video.mp4" type="video/mp4">
+      </video>
+    -->
+    <img
+      src="hero-event.jpg"
+      alt="Watdajel festival — LED sculpture and projections at Nicolaïkerk"
+      class="hero-video-placeholder"
+    >
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title" data-en="{{ .Params.hero_title }}" data-nl="{{ .Params.hero_title }}">{{ .Params.hero_title }}</h1>
+    <p class="hero-subtitle" data-en="{{ .Params.hero_subtitle_en }}" data-nl="{{ .Params.hero_subtitle_nl }}">{{ .Params.hero_subtitle_en }}</p>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="about">
+  <div class="manifesto-label reveal" data-en="{{ .Params.manifesto_label_en }}" data-nl="{{ .Params.manifesto_label_nl }}">{{ .Params.manifesto_label_en }}</div>
+  <div class="manifesto-text">
+    <p class="reveal" data-en="{{ .Params.manifesto_p1_en }}" data-nl="{{ .Params.manifesto_p1_nl }}">{{ .Params.manifesto_p1_en }}</p>
+    <p class="reveal" data-en="{{ .Params.manifesto_p2_en }}" data-nl="{{ .Params.manifesto_p2_nl }}">{{ .Params.manifesto_p2_en }}</p>
+    <p class="reveal"><em data-en="{{ .Params.manifesto_p3_en }}" data-nl="{{ .Params.manifesto_p3_nl }}">{{ .Params.manifesto_p3_en }}</em></p>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="image-strip">
+  <div class="image-strip-item">
+    <div class="image-placeholder">
+      <span>Photo — Festival at Nicolaïkerk</span>
+    </div>
+  </div>
+  <div class="image-strip-item">
+    <div class="image-placeholder">
+      <span>Photo — Installation</span>
+    </div>
+  </div>
+  <div class="image-strip-item">
+    <div class="image-placeholder">
+      <span>Photo — Live performance</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-break reveal">
+  <div class="quote-symbol">◎</div>
+  <blockquote data-en="{{ .Params.quote_en }}" data-nl="{{ .Params.quote_nl }}">{{ .Params.quote_en }}</blockquote>
+</div>
+
+<!-- PROGRAM -->
+<section class="program" id="program">
+  <div class="section-header reveal">
+    <h2 data-en="Program" data-nl="Programma">Program</h2>
+    <span class="label" data-en="Upcoming" data-nl="Aankomend">Upcoming</span>
+  </div>
+  <div class="event-list">
+    {{ range sort (where .Site.RegularPages "Section" "events") "Params.weight" }}
+    <a class="event-item reveal" href="#">
+      <span class="event-date">{{ .Params.date_display }}</span>
+      <div class="event-info">
+        <span class="event-title" data-en="{{ .Params.title_en }}" data-nl="{{ .Params.title_nl }}">{{ .Params.title_en }}</span>
+        <span class="event-description" data-en="{{ .Params.description_en }}" data-nl="{{ .Params.description_nl }}">{{ .Params.description_en }}</span>
+      </div>
+      <span class="event-tag" data-en="{{ .Params.tag_en }}" data-nl="{{ .Params.tag_nl }}">{{ .Params.tag_en }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+
+<!-- THE SPACE -->
+<section class="space" id="space">
+  <div class="space-grid">
+    <div class="space-image reveal">
+      <div class="image-placeholder" style="width:100%;height:100%;">
+        <span>Photo — The space, Catharijnesingel</span>
+      </div>
+    </div>
+    <div class="space-info">
+      <h2 class="reveal" data-en="{{ .Params.space_title_en }}" data-nl="{{ .Params.space_title_nl }}">{{ .Params.space_title_en }}</h2>
+      <p class="reveal" data-en="{{ .Params.space_description_en }}" data-nl="{{ .Params.space_description_nl }}">{{ .Params.space_description_en }}</p>
+      <div class="space-address reveal">
+        Catharijnesingel 52<br>
+        3511 GC Utrecht<br>
+        The Netherlands
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Watdajel</h3>
+      <p data-en="Creative & cultural platform in Utrecht." data-nl="Creatief & cultureel platform in Utrecht.">Creative & cultural platform in Utrecht.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Connect" data-nl="Contact">Connect</h4>
+      <a href="mailto:info@watdajel.com">info@watdajel.com</a>
+      <a href="https://www.instagram.com/watdajel_festival/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/watdajel.art" target="_blank">Facebook</a>
+      <a href="https://soundcloud.com/watdajel" target="_blank">SoundCloud</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Visit" data-nl="Bezoek">Visit</h4>
+      <a href="#">Catharijnesingel 52</a>
+      <a href="#">3511 GC Utrecht</a>
+      <a href="#">The Netherlands</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Watdajel</span>
+    <span data-en="Creative & Sustainable Spaces" data-nl="Creatieve & Duurzame Ruimtes">Creative & Sustainable Spaces</span>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'nl' : 'en';
+    const btn = document.querySelector('.lang-toggle');
+    btn.textContent = currentLang === 'en' ? 'NL' : 'EN';
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute(`data-${currentLang}`);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = text;
+        } else {
+          el.innerHTML = text;
+        }
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
