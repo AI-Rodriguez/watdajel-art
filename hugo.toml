@@ -1,0 +1,8 @@
+baseURL = "https://watdajelfestival.com/"
+languageCode = "en-us"
+title = "WATDAJEL — Creative & Cultural Platform, Utrecht"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
