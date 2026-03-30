@@ -28,7 +28,7 @@ quote_nl: "Creativiteit heeft geen paspoort, geen genre, geen toestemming nodig.
 hero_image: "hero-event.jpg"
 strip_image_1: "xxx.jpg"
 strip_image_2: ""
-strip_image_3: ""
+strip_image_3: "watdajel website12 "
 
 space_title_en: "The History"
 space_title_nl: "De Geschiedenis"
