@@ -30,13 +30,9 @@ strip_image_1: "xxx.jpg"
 strip_image_2: ""
 strip_image_3: ""
 
-space_title_en: "The Space"
-space_title_nl: "De Ruimte"
-space_description_en: "Broedplaats and stage in the center of Utrecht. A
-  workspace for creators, a venue for exhibitions, a meeting ground for anyone
-  who believes in the power of making things together."
-space_description_nl: "Broedplaats en podium in het centrum van Utrecht. Een
-  werkruimte voor makers, een locatie voor exposities, een ontmoetingsplek voor
-  iedereen die gelooft in de kracht van samen maken."
+space_title_en: "The History"
+space_title_nl: "De Geschiedenis"
+space_description_en: ""
+space_description_nl: ""
 space_image: ""
 ---
