@@ -34,5 +34,5 @@ space_title_en: "The History"
 space_title_nl: "De Geschiedenis"
 space_description_en: ""
 space_description_nl: ""
-space_image: "506942342_3174372622720846_62878475450199182_n "
+space_image: "506942342_3174372622720846_62878475450199182_n.jpg"
 ---
