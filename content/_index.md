@@ -124,5 +124,5 @@ space_description_nl: "Ergens in een bar in Lima, Peru klinkt gezelligheid,
   en waar ontmoeting altijd centraal staat.
 
   \n"
-space_image: "/508151023_3177262962431812_290250723593403961_n.jpg"
+space_image: "/506525126_3172068542951254_8705903364275483404_n.jpg"
 ---
