@@ -28,7 +28,7 @@ quote_nl: "Creativiteit heeft geen paspoort, geen genre, geen toestemming nodig.
 hero_image: "hero-event.jpg"
 strip_image_1: "xxx.jpg"
 strip_image_2: "pic1.jpg"
-strip_image_3: "watdajel website12.jpg"
+strip_image_3: "/508121532_3177262982431810_1249213809395364131_n.jpg"
 
 space_title_en: "The History"
 space_title_nl: "De Geschiedenis"
@@ -124,5 +124,5 @@ space_description_nl: "Ergens in een bar in Lima, Peru klinkt gezelligheid,
   en waar ontmoeting altijd centraal staat.
 
   \n"
-space_image: "506942342_3174372622720846_62878475450199182_n.jpg"
+space_image: "/508151023_3177262962431812_290250723593403961_n.jpg"
 ---
