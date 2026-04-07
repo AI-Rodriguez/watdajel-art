@@ -25,104 +25,80 @@ manifesto_p3_nl: "Wij creëren de condities waaronder grote kunst ontstaat."
 quote_en: "Creativity has no passport, no genre, no permission needed."
 quote_nl: "Creativiteit heeft geen paspoort, geen genre, geen toestemming nodig."
 
-hero_image: "hero-event.jpg"
-strip_image_1: "xxx.jpg"
-strip_image_2: "pic1.jpg"
-strip_image_3: "/508121532_3177262982431810_1249213809395364131_n.jpg"
+hero_image: "/photo12.jpg"
+strip_image_1: "/photo10.jpg"
+strip_image_2: "/photo6.jpg"
+strip_image_3: "/photo11.jpg"
 
 space_title_en: "The History"
 space_title_nl: "De Geschiedenis"
-space_description_en: "Somewhere in a bar in Lima, Peru, you hear the buzz of
-  conversation, music, and laughter:
+space_description_en: "The story
 
-  the sound of Watdajel has begun.
+
+  Somewhere in a bar in Lima, Peru, it began.
+
+  With music, laughter, and people finding each other.
 
 
   From bar to movement
 
-  In 2011, founder Jesus Portal opens a place in Lima for artists, musicians,
-  and creators. An intimate bar where people gather after performances — and
-  where ideas are born that grow into exhibitions, collaborations, and
-  festivals.
+
+  In 2011, founder Jesus Portal opened a space for artists and creators.
+
+  What started as a meeting place quickly grew into a cultural movement of
+  exhibitions, collaborations, and festivals.
 
 
-  What starts as a meeting place quickly evolves into a local cultural movement.
+  Utrecht
 
 
-  Utrecht: where everything comes together
+  In 2015, he brought Watdajel to the Netherlands.
 
-  In 2015, Jesus moves to the Netherlands.
-
-  And once again, he feels it: the need for connection.
-
-
-  In Utrecht, a new chapter of Watdajel begins. What starts with a small
-  exhibition soon grows into a strong network of makers, artists, and creatives.
+  In Utrecht, it evolved into a strong creative network and a series of events —
+  from Tivoli Oudegracht and the Nicolaïkerk to large-scale festivals at the
+  Muntgebouw, bringing together over 60 artists across 8 stages.
 
 
-  The energy translates into larger productions:
+  Today
 
-  from events at Tivoli Oudegracht and the Nicolaïkerk to festivals where entire
-  venues are transformed into creative worlds.
-
-
-  The highlight? Large-scale editions at the Muntgebouw, where more than 60
-  artists and 8 stages come together in one immersive experience.
-
-
-  Watdajel today
 
   Watdajel has grown into more than an event.
 
-  It is a community. A stage. A movement.
+  It’s a community, a platform, and a place where people come together to
+  create, work, and connect."
+space_description_nl: "De geschiedenis
 
 
-  A place where music, art, and people come together —
+  Ergens in een bar in Lima, Peru begon het.
 
-  and where connection is always at the center."
-space_description_nl: "Ergens in een bar in Lima, Peru klinkt gezelligheid,
-  muziek en gelach:
+  Met muziek, gelach en mensen die elkaar vonden.
 
-  het geluid van Watdajel is gestart.
 
   Van bar naar beweging
 
-  In 2011 opent oprichter Jesus Portal een plek in Lima voor artiesten,
-  muzikanten en makers. Een intieme bar waar mensen samen komen na optredens -
-  en waar ideeën ontstaan die uitgroeien tot exposities, samenwerking en
-  festivals.
 
-  wat begint als ontmoetingsplek, groeit al snel uit tot lokale culturele
-  beweging.
+  In 2011 opent oprichter Jesus Portal een plek voor artiesten en makers.
 
-  Utrecht: waar alles samenkomt
+  Wat begint als een ontmoetingsplek, groeit uit tot een culturele beweging met
+  exposities, samenwerkingen en festivals.
 
-  in 2015 verhuist Jesus naar Nederland.
 
-  En opnieuw voelt hij het: de behoefte aan verbinding.
+  Utrecht
 
-  In Utrecht ontstaat een nieuw hoofdstuk van Watdajel. Wat begint met een
-  kleine expositie groeit al snel uit tot een sterk netwerk van makers,
-  artiesten en creatieven.
 
-  De energie vertaalt zich naar grotere producties:\ 
+  In 2015 brengt hij Watdajel naar Nederland.
 
-  van events in Tivoli Oudegracht en de Nicolaikerk tot festivals waarin
-  complete locaties worden omgetoverd tot creatieve werelden.
+  In Utrecht groeit het uit tot een sterk netwerk en een serie events — van
+  Tivoli Oudegracht en de Nicolaïkerk tot grootschalige festivals in het
+  Muntgebouw met meer dan 60 artiesten en 8 podia.
 
-  Het hoogtepunt? Grootschalige edities in het Muntgebouw, waar meer dan 60
-  artiesten en 8 podia samenkomen in één totaalervaring.
 
-  Watdajel vandaag
+  Vandaag
 
-  Watdajel is uitgegroeid tot meer dan een event.\ 
 
-  Het is een community. Een podium. Een beweging.
-
-  Een plek waar muziek, kunst en mensen samenkomen -\ 
-
-  en waar ontmoeting altijd centraal staat.
+  Watdajel is nu een community, een podium en een plek waar mensen samenkomen om
+  te creëren, te werken en elkaar te ontmoeten.
 
   \n"
-space_image: "/506525126_3172068542951254_8705903364275483404_n.jpg"
+space_image: "/photo2.jpg"
 ---
